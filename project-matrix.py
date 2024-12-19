@@ -1,11 +1,13 @@
 ### INPUT BARIS KOLOM ###
 print ("Selamat Datang di Project Matrix")
 print ("Tentukan Baris dan Kolom")
-Baris = input (int("Baris = "))
-Input = input (int("Kolom = "))
+baris = input (int("Baris = "))
+kolom = input (int("Kolom = "))
 
-for range(len) in Baris:
-    input(int(f"Masukkan "))
+if baris < 5:
+    if kolom < 5:
+        for range(len) in baris:
+            input(int(f"Masukkan "))
 
 ### PILIH MENU ####
 print ("Daftar Menu")
