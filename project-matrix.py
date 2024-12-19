@@ -8,6 +8,8 @@ if baris < 5:
     if kolom < 5:
         for range(len) in baris:
             input(int(f"Masukkan "))
+    else:
+        print ("tolong input angka : ")
 
 ### PILIH MENU ####
 print ("Daftar Menu")
