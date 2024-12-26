@@ -1,151 +1,173 @@
-print ("Selamat Datang di Kalkulator Matrix")
+print ("Selamat Datang di Kalkulator Matriks")
 
-matrix1 = []
-baris = []
+# m1 = matriks 1 
+# m2 = matriks 2
+# nb1 : banyak baris di matrix 1
+# nk1 : banyak kolom di matrix 1
+# nb2 : banyak baris di matrix 2
+# nk2 : banyak kolom di matrix 2
+
 
 while True:
-    print ("Input Data Matriks 1") #Input data matriks 1
-    while True:
-        nb1 = int(input("Input baris (maksimal 4) = "))
-        nk1 = int(input("Input kolom (maksimal 4) = "))
-        if nb1 < 5:
-            if nk1 < 5:
+    m1 = []
+    m2 = []
+    mhasil = []
+    print("\nMenu Operasi")
+    print("1. Penjumlahan Matriks")
+    print("2. Pengurangan Matriks")
+    print("3. Perkalian Matriks")
+    print("4. Determinant Matriks")
+    print("5. Invers Matriks")
+    print("6. Keluar")
+
+    try :
+        pilihan = int(input("\nSilahkan Pilih Angka Menu Operasi : "))
+    except ValueError:
+        print("Inputan anda salah. Silahkan input ulang.")
+        continue
+
+    # MENU 1 #    
+    if pilihan == 1:
+        print("\nSilahkan Input Data Matriks 1")
+        while True:
+            try :
+                nb1 = int(input("Silahkan Input Banyak Baris (Maksimal 4): "))
+            except ValueError:
+                print("Inputan anda salah. Silahkan input ulang.")
+                continue
+            
+            if 0 < nb1 < 5:
                 break
-        else:
-            print("\nTolong input angka dalam batas")
+            else:
+                print("Tolong input dalam batas.\n")
 
-    for i in range (nb1):
-        simpan_kolom1 = []
-        for j in range (nk1):
-            isi_kolom1 = int(input(f"Input baris {i+1} kolom {j+1} = "))
-            simpan_kolom1.append(isi_kolom1)
-        matrix1.append(simpan_kolom1)
-
-    print ("Input Data Matriks 2") #input data matriks 2
-    while True:
-        nb2 = int(input("Input baris (maksimal 4) = "))
-        nk2 = int(input("Input kolom (maksimal 4) = "))
-        if nb2 < 5:
-            if nk2 < 5:
+        while True:
+            try :
+                nk1 = int(input("Silahkan Input Banyak Kolom (Maksimal 4) : "))
+                print("\n")
+            except ValueError:
+                print("Inputan anda salah. Silahkan input ulang\n")
+                continue
+            
+            if 0 < nk1 < 5:
                 break
-        else:
-            print("\nTolong input angka dalam batas")
-
-    for i in range (nb2):
-        simpan_kolom2 = []
-        for j in range (nk2):
-            isi_kolom2 = int(input(f"Input baris {i+1} kolom {j+1} = "))
-            simpan_kolom2.append(isi_kolom2)
-        matrix1.append(simpan_kolom2)
-    
-    ### PILIH MENU ###
-    print ("Menu Operasi")
-    print ("1. Penjumlahan Matriks")
-    print ("2. Pengurangan Matriks")
-    print ("3. Perkalian Matriks")
-    print ("4. Transpose Matriks") #membalik baris ke kolom dan sebaliknya
-    print ("5. Invers Matriks")
-    print ("6. Keluar")
-
-    while True:
-        try:
-            pilih = int(input("Silahkan Ketik Nomor Menu"))
-        except:
-            print ("Inputan anda tidak valid, silahkan input ulang")
-            continue
+            else:
+                print("Tolong input dalam batas.\n")
         
-        if pilih < 7:
-            break
-        else:
-            print("Tolong Input Sesuai Nomor yang ada di Menu")
-    
-    if pilih == 1:  # Penjumlahan Matriks
-        if nb1 == nb2 and nk1 == nk2:
-            hasil = []
-            for i in range(nb1):
-                baris_hasil = []
-                for j in range(nk1):
-                    baris_hasil.append(matrix1[i][j] + matrix1[nb1 + i][j])
-                hasil.append(baris_hasil)
-            print("\nHasil Penjumlahan Matriks:")
-            for row in hasil:
-                print(row)
-        else:
-            print("Penjumlahan tidak bisa dilakukan karena ukuran matriks berbeda.")
-
-
-    elif pilih == 2:  # Pengurangan Matriks
-        if nb1 == nb2 and nk1 == nk2:
-            hasil = []
-            for i in range(nb1):
-                baris_hasil = []
-                for j in range(nk1):
-                    baris_hasil.append(matrix1[i][j] - matrix1[nb1 + i][j])
-                hasil.append(baris_hasil)
-            print("\nHasil Pengurangan Matriks:")
-            for row in hasil:
-                print(row)
-        else:
-            print("Pengurangan tidak bisa dilakukan karena ukuran matriks berbeda.")
-
-    elif pilih == 3:  # Perkalian Matriks
-        if nk1 == nb2:
-            hasil = []
-            for i in range(nb1):
-                baris_hasil = []
-                for j in range(nk2):
-                    elemen = 0
-                    for k in range(nk1):
-                        elemen += matrix1[i][k] * matrix1[nb1 + k][j]
-                    baris_hasil.append(elemen)
-                hasil.append(baris_hasil)
-            print("\nHasil Perkalian Matriks:")
-            for row in hasil:
-                print(row)
-        else:
-            print("Perkalian tidak bisa dilakukan karena jumlah kolom Matriks 1 tidak sama dengan jumlah baris Matriks 2.")
-
-    elif pilih == 4:  # Transpose Matriks
-        print("1. Transpose Matriks 1")
-        print("2. Transpose Matriks 2")
-        pilihan_transpose = int(input("Pilih Matriks yang akan di-transpose: "))
-        if pilihan_transpose == 1:
-            hasil = []
+        for i in range(nb1):
+            simpan_kolom1 = []
             for j in range(nk1):
-                baris_hasil = []
-                for i in range(nb1):
-                    baris_hasil.append(matrix1[i][j])
-                hasil.append(baris_hasil)
-            print("\nHasil Transpose Matriks 1:")
-            for row in hasil:
+                try:
+                    isi_kolom1 = int(input(f"Silahkan input baris {i+1} kolom {j+1} : "))
+                    simpan_kolom1.append(isi_kolom1)
+                except ValueError:
+                    print("Inputan anda salah. Silahkan input ulang\n")
+                    continue
+            m1.append(simpan_kolom1)
+        
+        print ("\nSilahkan Input Data Matriks 2")
+        for i in range(nb1):
+            simpan_kolom2 = []
+            for j in range(nk1):
+                try:
+                    isi_kolom2 = int(input(f"Silahkan input baris {i+1} kolom {j+1} : "))
+                    simpan_kolom2.append(isi_kolom2)
+                except ValueError:
+                    print("Inputan anda salah. Silahkan input ulang\n")
+                    continue
+            m2.append(simpan_kolom2)
+        
+        hasil_penjumlahan = []
+        for i in range(nb1):
+            barishasil1 = []
+            for j in range(nk1):
+                barishasil1.append(m1[i][j] + m2[i][j])
+            hasil_penjumlahan.append(barishasil1)
+        print(f"Hasil penjumlahan matriks adalah : ")
+        for row in hasil_penjumlahan:
+            print(row)
+
+    # MENU 2 #  
+    elif pilihan == 2:
+        print("\Silahkan Input Data Matriks 1")
+        while True:
+            try:
+                nb1 = int(input("Silahkan Input Banyak Baris (Maksimal 4) : "))
+            except ValueError:
+                print("Inputan anda salah. Silahkan input ulang.")
+                continue
+
+            if 0 < nb1 < 5 :
+                break
+            else:
+                print("Tolong input dalam batas.\n")
+        
+        while True:
+            try:
+                nk1 = int(input("Silahkan Input Banyak Kolom (Maksimal 4) : "))
+                print("\n")
+            except ValueError:
+                print("Inputan anda salah. Silahkan input ulang.\n")
+                continue
+            
+            if 0 < nk1 < 5:
+                break
+            else:
+                print("Tolong input dalam batas.\n")
+        
+        for i in range(nb1):
+            simpan_kolom1 = []
+            for j in range(nk1):
+                try:
+                    isi_kolom1 = int(input(f"Silahkan input baris {i+1} kolom {j+1} : "))
+                    simpan_kolom1.append(isi_kolom1)
+                except ValueError:
+                    print("Inputan anda salah. Silahkan input ulang\n")
+                    continue
+                m1.append(simpan_kolom1)
+            
+            print("\nSilahkan Input Data Matriks 2")
+            for i in range(nb1):
+                simpan_kolom2 =[]
+                for j in range(nk1):
+                    try:
+                        isi_kolom2 = int(input(f"Silahkan input baris {i+1} kolom {j+1} : "))
+                        simpan_kolom2.append(isi_kolom2)
+                    except ValueError:
+                        print("Inputan anda salah. Silahkan input ulang\n")
+                        continue
+                m2.append(simpan_kolom2)
+
+            hasil_pengurangan = []
+            for i in range(nb1):
+                barishasil1 = []
+                for j in range(nk1):
+                    barishasil1.append(m1[i][j] - m2[i][j])
+                hasil_pengurangan.append(barishasil1)
+            print(f"Hasil pengurangan matriks adalah : ")
+            for row in hasil_pengurangan:
                 print(row)
-        elif pilihan_transpose == 2:
-            hasil = []
-            for j in range(nk2):
-                baris_hasil = []
-                for i in range(nb2):
-                    baris_hasil.append(matrix1[nb1 + i][j])
-                hasil.append(baris_hasil)
-            print("\nHasil Transpose Matriks 2:")
-            for row in hasil:
-                print(row)
+    # MENU 3 #
+    elif pilihan == 3:
+        print("\nSilahkan Input Data Matriks 1")
+        # INPUT BARIS #
+        while True:
+            try:
+                nb1 = int(input("Silahkan Input Banyak Baris (Maksimal 4) : "))
+            except ValueError:
+                print("Inputan anda salah. Silahkan input ulang.")
+                continue
 
-    elif pilih == 5:  # Invers Matriks
-        print("Invers Matriks hanya bisa dilakukan untuk matriks persegi.")
-        pilihan_invers = int(input("Pilih Matriks yang akan di-invers (1 atau 2): "))
-        if pilihan_invers == 1 and nb1 == nk1:
-            print("Invers Matriks 1 masih membutuhkan langkah manual seperti matriks adjoint.")
-        elif pilihan_invers == 2 and nb2 == nk2:
-            print("Invers Matriks 2 masih membutuhkan langkah manual seperti matriks adjoint.")
-        else:
-            print("Invers hanya berlaku untuk matriks persegi.")
+            if 0 < nb1 < 5:
+                break
+            else:
+                print("Tolong input dalam batas.\n")
 
 
-    elif pilih == 6:
-        break
-
+    
     else:
-        print ("Pilihan tidak valid. Program otomatis berhenti")    
         break
-    print (matrix1)
+    
     break
+
+print(m1, m2)
